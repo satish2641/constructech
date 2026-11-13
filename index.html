@@ -1079,7 +1079,7 @@ const SECTIONS=[
  {k:'tl',t:'Tools',ico:'tools',tabs:[['templates','Templates'],['import','Import tasks'],['quick','Quick replies'],['notes','Notes']]},
  {k:'st',t:'Settings',ico:'settings',tabs:[['settings','Settings'],['flow','Developer – 8-step flow']]}];
 /* PIN lock – supervisor (Monitoring) and admin (Settings) pages. Default PIN 0000, change it in Settings. */
-var PIN_LOCK={supervision:1,settings:1,flow:1},PIN_OK=false;
+var PIN_LOCK={supervision:1},PIN_OK=false;
 function pinGet(){try{return localStorage.getItem('ct_pin')||'0000'}catch(e){return '0000'}}
 function pinLocked(b){return !!PIN_LOCK[b]&&!PIN_OK}
 function pinSet(on){PIN_OK=!!on;document.body.classList.toggle('is-admin',PIN_OK);const w=document.getElementById('adminSw');if(w){w.classList.toggle('on',PIN_OK);w.setAttribute('aria-checked',PIN_OK?'true':'false')}}
@@ -2967,7 +2967,7 @@ function exportCSV(k){
 /* settings */
 function vSettings(){
  const s=S.settings;
- return `<div class="grid"><div class="panel pinset"><h2>🔒 Supervisor &amp; admin PIN</h2><p class="hint">Monitoring and Settings need a 4-digit PIN. To change it you must enter the current PIN first. The PIN is saved on this device only.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" data-pin="change">Change PIN</button><button class="btn ghost" data-pin="lock">Lock now</button></div></div><div class="panel"><h2>General settings &amp; KPI targets</h2><p class="hint">Approval chains are in Approvals → Approval matrix. Staff are in People &amp; HR → Staff.</p><div class="fg" id="setForm">
+ return `<div class="grid"><div class="panel pinset admin-only"><h2>🔒 Supervisor &amp; admin PIN</h2><p class="hint">Monitoring and the Admin switch need a 4-digit PIN. To change it you must enter the current PIN first. The PIN is saved on this device only.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" data-pin="change">Change PIN</button><button class="btn ghost" data-pin="lock">Lock now</button></div></div><div class="panel"><h2>General settings &amp; KPI targets</h2><p class="hint">Approval chains are in Approvals → Approval matrix. Staff are in People &amp; HR → Staff.</p><div class="fg" id="setForm">
   <label>Current user<select name="user">${opts(staffOpts(),s.user)}</select></label>
   <label>Customer satisfaction target %<input type="number" name="t_csat" value="${s.targets.csat}"></label>
   <label>Default penalty (S$, 0 = none)<input type="number" name="penRate" value="${s.penRate||0}"></label><label>Default penalty per<select name="penUnit">${opts(Object.keys(PEN_UNITS),s.penUnit||'day')}</select></label>
