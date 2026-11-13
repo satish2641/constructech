@@ -981,11 +981,7 @@ body.ui-v2 .dz-out>.nm b{font-size:15px;color:#9aa0aa;font-weight:600;padding:5p
   .topbar>[data-act="logout"]{padding:6px 8px}
   .topbar .btn.wa{display:none}
 }
-/* ===== WhatsApp buttons in green + faint logo watermark behind the dashboard ===== */
-.btn.wa,body.ui-v2 .topbar .btn.wa{background:#25D366;border-color:#25D366;color:#fff}
-.btn.wa:hover,body.ui-v2 .topbar .btn.wa:hover{background:#1DA851;border-color:#1DA851}
-body.ui-v2 .dz-b[data-act="watoday"]{background:#25D366;border-color:#25D366;color:#fff}
-body.ui-v2 .dz-b[data-act="watoday"]:hover{background:#1DA851;border-color:#1DA851}
+/* ===== Faint logo watermark behind the dashboard ===== */
 body.ui-v2 .dz::after{content:'';position:fixed;top:0;right:0;bottom:0;left:276px;background:var(--ct-logo) center/min(70%,760px) auto no-repeat;opacity:.05;pointer-events:none;z-index:4}
 body.ui-v2.collapsed .dz::after{left:72px}
 @media (max-width:820px){body.ui-v2 .dz::after,body.ui-v2.collapsed .dz::after{left:0;background-size:85% auto}}
